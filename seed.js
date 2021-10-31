@@ -1,1 +1,3 @@
-// colocar query do MongoDB
+// req. 6
+
+db.users.insertOne({ name: 'admin', email: 'root@email.com', password: 'admin', role: 'admin' });
