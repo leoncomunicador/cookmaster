@@ -3,8 +3,8 @@ const rescue = require('express-rescue');
 
 const usersController = require('../controllers/usersControllers');
 
-const validateUsers = require('../middlewares/validateUsers');
+const middleware = require('../middlewares/validateUsers');
 
-router.post('/', validateUsers.verifyUserIsValid, rescue(usersController.createUser));
+router.post('/', middleware.verifyUserIsValid, rescue(usersController.createUser));
 
 module.exports = router;
