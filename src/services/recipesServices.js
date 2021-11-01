@@ -25,13 +25,15 @@ const updateRecipe = async (name, ingredients, preparation, userId) => {
   return recipe;
 };
 
-// req. 8 excludeRecipes
-// const { user: admin } = validToken
-// if (admin === 'admin') return .....
+const deleteRecipe = async (id) => {
+  const excludeRecipe = await recipesModels.deleteRecipe(id);
+    return excludeRecipe;
+};
 
 module.exports = {
   createRecipes,
   getAllRecipes,
   getRecipeById,
   updateRecipe,
+  deleteRecipe,
 };

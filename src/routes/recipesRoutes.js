@@ -13,4 +13,6 @@ router.post('/', middleware.recipesIsValid, rescue(recipesControllers.createReci
 
 router.put('/:id', middleware.updateRecipes, rescue(recipesControllers.updateRecipe));
 
+router.delete('/:id', middleware.updateRecipes, rescue(recipesControllers.deleteRecipe));
+
 module.exports = router;
