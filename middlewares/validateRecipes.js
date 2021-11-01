@@ -44,6 +44,16 @@ const isValidToken = (req, res, next) => {
   next();
 };
 
+const isValidId = async (req, res, next) => {
+  const { id } = req.params;
+  if (!id || id.length !== 24) {
+    return res.status(404).json({
+      message: 'recipe not found',
+    });
+  }
+  next();
+};
+
 const recipesIsValid = [
   hasNameInRecipes,
   hasIngredientsInRecipes,
@@ -54,4 +64,5 @@ const recipesIsValid = [
 module.exports = {
   recipesIsValid,
   isValidToken,
+  isValidId,
 };
