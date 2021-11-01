@@ -10,6 +10,16 @@ const createRecipes = async (token, name, ingredients, preparation) => {
   }
 };
 
+const getAllRecipes = async (name, ingredients, preparation, userId) => {
+  const recipes = await recipesModels.getAllRecipes(name, ingredients, preparation, userId);
+  return recipes;
+};
+
+// req. 8 excludeRecipes
+// const { user: admin } = validToken
+// if (admin === 'admin') return .....
+
 module.exports = {
   createRecipes,
+  getAllRecipes,
 };

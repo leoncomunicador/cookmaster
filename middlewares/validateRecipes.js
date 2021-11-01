@@ -53,4 +53,5 @@ const recipesIsValid = [
 
 module.exports = {
   recipesIsValid,
+  isValidToken,
 };
