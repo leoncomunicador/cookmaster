@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const { users, login, recipes } = require('../../routes');
+const { users, login, recipes } = require('../routes');
 
 const app = express();
 app.use(bodyParser.json());
