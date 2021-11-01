@@ -11,4 +11,6 @@ router.get('/', rescue(recipesControllers.getAllRecipes));
 
 router.post('/', middleware.recipesIsValid, rescue(recipesControllers.createRecipes));
 
+router.put('/:id', middleware.updateRecipes, rescue(recipesControllers.updateRecipe));
+
 module.exports = router;

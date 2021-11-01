@@ -30,6 +30,16 @@ const hasPreparationInRecipes = async (req, res, next) => {
   next();
 };
 
+const isTokenOn = (req, res, next) => {
+  const { authorization: token } = req.headers;
+  if (!token) {
+    return res.status(401).json({
+      message: 'missing auth token',
+    });
+  }
+  next();
+};
+
 const isValidToken = (req, res, next) => {
   try {
     const { authorization: token } = req.headers;
@@ -54,6 +64,11 @@ const isValidId = async (req, res, next) => {
   next();
 };
 
+const updateRecipes = [
+  isTokenOn,
+  isValidToken,
+];
+
 const recipesIsValid = [
   hasNameInRecipes,
   hasIngredientsInRecipes,
@@ -65,4 +80,5 @@ module.exports = {
   recipesIsValid,
   isValidToken,
   isValidId,
+  updateRecipes,
 };

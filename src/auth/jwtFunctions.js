@@ -7,7 +7,7 @@ const create = (user) => {
   const payload = { ...user }; // dados do usuário
   const jwtConfig = {
     algorithm: 'HS256', // algoritmo que vai ser usado
-    expiresIn: '30 d', // tempo de expiração
+    expiresIn: '30d', // tempo de expiração
   };
   const token = jwt.sign(payload, secret, jwtConfig); // sign cria o token
   return token;
