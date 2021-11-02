@@ -4,7 +4,7 @@ const rescue = require('express-rescue');
 const recipesControllers = require('../controllers/recipesControllers');
 
 const middleware = require('../middlewares/validateRecipes');
-const { imageUpload } = require('../middlewares/multerMiddleware');
+const { changeImage } = require('../middlewares/multerMiddleware');
 
 router.get('/:id', middleware.isValidId, rescue(recipesControllers.getRecipeById));
 
@@ -17,6 +17,6 @@ router.put('/:id', middleware.isTokenOk, rescue(recipesControllers.updateRecipe)
 router.delete('/:id', middleware.isTokenOk, rescue(recipesControllers.deleteRecipe));
 
 router.put('/:id/image', middleware.isTokenOk,
-imageUpload(), rescue(recipesControllers.editRecipeImage));
+changeImage(), rescue(recipesControllers.editRecipeImage));
 
 module.exports = router;
