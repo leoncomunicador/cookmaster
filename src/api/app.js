@@ -1,5 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const { resolve } = require('path');
+
+const uploadPath = resolve(__dirname, '..', 'uploads');
 
 const { users, login, recipes } = require('../routes');
 
@@ -19,6 +22,8 @@ app.use('/users', users);
 app.use('/login', login);
 
 app.use('/recipes', recipes);
+
+app.use('/images', express.static(`${uploadPath}`)); // Req. 10 - faz requisições para arquivos estáticos
 
 app.use(error);
 

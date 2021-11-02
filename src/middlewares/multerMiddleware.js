@@ -1,11 +1,11 @@
 const multer = require('multer');
 const { resolve } = require('path');
 
-const changeImage = () => {
-  const updateImage = resolve(__dirname, '..', 'uploads');
+const updateImage = () => {
+  const pathImage = resolve(__dirname, '..', 'uploads');
   const storage = multer.diskStorage({
     destination: (_req, _file, callback) => {
-      callback(null, `${updateImage}`);
+      callback(null, `${pathImage}`);
     },
     filename: (req, file, callback) => {
       callback(null, `${req.params.id}.jpeg`);
@@ -16,5 +16,5 @@ const changeImage = () => {
 };
 
 module.exports = {
-  changeImage,
+  updateImage,
 };
