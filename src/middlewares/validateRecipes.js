@@ -64,7 +64,7 @@ const isValidId = async (req, res, next) => {
   next();
 };
 
-const updateRecipes = [
+const isTokenOk = [
   isTokenOn,
   isValidToken,
 ];
@@ -80,5 +80,5 @@ module.exports = {
   recipesIsValid,
   isValidToken,
   isValidId,
-  updateRecipes,
+  isTokenOk,
 };

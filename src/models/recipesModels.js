@@ -28,7 +28,6 @@ const updateRecipe = async (name, ingredients, preparation, id) => {
       .collection('recipes')
       .updateOne({ _id: ObjectId(id) }, { $set: { name, ingredients, preparation } }));
   const updatedRecipe = await getRecipeById(id);
-  console.log(updatedRecipe);
   return updatedRecipe;
 };
 
@@ -39,10 +38,22 @@ const deleteRecipe = async (id) => {
   await db.collection('recipes').deleteOne({ _id: ObjectId(id) });
 };
 
+const editRecipeImage = async (id, image) => {
+  if (!ObjectId.isValid(id)) return null;
+
+  const db = await connection();
+  await db.collection('recipes')
+    .updateOne({ _id: ObjectId(id) }, { $set: { image } });
+  const updateImage = await getRecipeById(id);
+  console.log(updateImage);
+  return updateImage;
+};
+
 module.exports = {
   createRecipes,
   getAllRecipes,
   getRecipeById,
   updateRecipe,
   deleteRecipe,
+  editRecipeImage,
 };

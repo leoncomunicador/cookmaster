@@ -30,10 +30,16 @@ const deleteRecipe = async (id) => {
     return excludeRecipe;
 };
 
+const editRecipeImage = async (id, image) => {
+  const updateImage = await recipesModels.editRecipeImage(id, image);
+  return updateImage;
+};
+
 module.exports = {
   createRecipes,
   getAllRecipes,
   getRecipeById,
   updateRecipe,
   deleteRecipe,
+  editRecipeImage,
 };
